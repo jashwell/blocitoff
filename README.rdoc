@@ -1,6 +1,10 @@
-== README
+== Blocitoff README
 
 Ruby Version = 2.0.0p567
+
+Heroku Domain: jocelyn-blocitoff.herokuapp.com
+
+
 
 Configuration
 
