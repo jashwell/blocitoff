@@ -42,6 +42,7 @@ group :doc do
 end
 
 gem 'devise'
+gem 'figaro', '1.0'
 
 
 # Use ActiveModel has_secure_password
