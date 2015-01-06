@@ -9,8 +9,9 @@
 <body>
   <div class="container">
   <ul class="nav nav-tabs">
-    <li><%= link_to "Home", welcome_index_path %></li>
-    <li><%= link_to "About", welcome_about_path %></li>
+    <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "About", about_path %></li>
+    <li><%= link_to "New List", new_list_path %></li>
 
     <div class="pull-right user-info">
       <% if current_user %>
@@ -18,7 +19,7 @@
       <% else %>
         <%= link_to "Sign In", new_user_session_path %> or
         <%= link_to "Sign Up", new_user_registration_path %>
-        <% end %>
+      <% end %>
     </div>
 
   </ul>
