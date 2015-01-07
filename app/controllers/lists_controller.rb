@@ -34,4 +34,15 @@ class ListsController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @list = List.find(params[:id])
+    if @list.destroy
+      flash[:notice] = "You list was deleted successfully."
+      redirect_to @list
+    else
+      flash[:error] = "There was an error deleting the topic."
+      render :show
+    end
+  end
 end
