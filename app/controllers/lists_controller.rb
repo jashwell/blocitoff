@@ -1,8 +1,14 @@
 class ListsController < ApplicationController
 
   before_action :authenticate_user!
+  
+  def index
+    @lists = current_user.lists
+  end
+
   def show
-    @lists = current_user.list
+    @list = List.find(params[:id])
+    @items = @list.items
   end
 
   def new
@@ -10,7 +16,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(params.require(:list).permit(:title, :item))
+    @list = current_user.lists.build(list_params)
     if @list.save
       flash[:notice] = "List was saved."
       redirect_to @list
@@ -26,7 +32,7 @@ class ListsController < ApplicationController
 
   def update
     @list = List.find(params[:id])
-    if @list.update_attributes(params.require(:list).permit(:title, :item))
+    if @list.update_attributes(list_params)
       flash[:notice] = "List was updated."
       redirect_to @list
     else
@@ -45,4 +51,11 @@ class ListsController < ApplicationController
       render :show
     end
   end
+
+  private
+
+  def list_params
+    params.require(:list).permit(:title, :item)
+  end
+
 end
