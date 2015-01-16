@@ -43,6 +43,7 @@ end
 
 gem 'devise'
 gem 'figaro', '1.0'
+gem 'faker'
 
 
 # Use ActiveModel has_secure_password
