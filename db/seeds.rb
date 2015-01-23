@@ -27,6 +27,8 @@ lists = List.all
     list: lists.sample,
     body: Faker::Lorem.sentence(3, true, 2)
   )
+
+  item.update_attributes!(created_at: rand(1.minutes .. 7.days).ago)
 end
 
 puts "Seed finished"

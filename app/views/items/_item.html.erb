@@ -5,10 +5,17 @@
     <ul>
       
       <% @items.each do |item| %>
+      <div id= "<%="id-#{item.id}" %>" >
       <li>
       <%= item.body %>
-      </li>        
+      <%= link_to "", [@list, item], method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %>
+      <small>
+      <%= item.days_left %> days left
+      </small>
+      </li>  
+    </div>
       <% end %>
+
     </ul>
   </div>
 </div>

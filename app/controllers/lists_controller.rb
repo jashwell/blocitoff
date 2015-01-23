@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
-
+  respond_to :html, :js
+  
   before_action :authenticate_user!
   
   def index

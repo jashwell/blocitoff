@@ -2,7 +2,7 @@ Blocitoff::Application.routes.draw do
   get "items/new"
   devise_for :users
   resources :lists do
-    resources :items, only: [:new, :create]
+    resources :items, only: [:new, :create, :destroy]
   end
   
   get 'about' => 'welcome#about'

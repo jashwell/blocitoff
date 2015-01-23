@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  respond_to :html, :js
+
   def new
     @list = List.find(params[:list_id])
     @item = Item.new
@@ -14,6 +16,20 @@ class ItemsController < ApplicationController
     else
       flash[:error] = "There was an error saving the item. Please try again."
       render :new
+    end
+  end
+
+  def destroy
+    @list = List.find(params[:list_id])
+    @item = Item.find(params[:id])
+    if @item.destroy
+      flash[:notice] = "Item was completed!"
+    else
+      flash[:error] = "Item was not completed successfully."
+    end
+
+    respond_with(@item) do |format|
+      format.html { redirect_to [@list.item] }
     end
   end
 
